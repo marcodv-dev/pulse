@@ -1,0 +1,81 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(255, 100, 188, 0.5);
+  gap: 8px;
+}
+
+.settings-title {
+  flex: 1;
+  font-size: 18px;
+  text-align: center;
+}
+
+.settings-body {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-section h3 {
+  font-size: 16px;
+}
+
+.settings-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.import-status {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.import-status.success {
+  background: rgba(46, 139, 87, 0.1);
+  color: var(--success);
+}
+
+.import-status.error {
+  background: rgba(204, 0, 0, 0.1);
+  color: #c00;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.info-row + .info-row {
+  border-top: 1px solid var(--border);
+}
+
+.info-row span:first-child {
+  color: var(--text-secondary);
+}

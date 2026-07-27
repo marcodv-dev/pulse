@@ -1,0 +1,169 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s, transform 0.2s, box-shadow 0.2s;
+  line-height: 1;
+}
+
+.btn-pill {
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.05),
+    0 12px 24px -6px rgba(0, 0, 0, 0.1),
+    0 4px 8px -2px rgba(0, 0, 0, 0.03);
+}
+
+.btn-pill:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 0, 127, 0.85) 0%,
+    rgba(255, 0, 127, 0.5) 100%
+  ) !important;
+  border: 1px solid rgba(255, 0, 127, 0.5);
+  color: #ffffff !important;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 6px rgba(100, 0, 50, 0.3),
+    0 12px 24px -6px rgba(255, 0, 127, 0.25),
+    0 4px 8px -2px rgba(0, 0, 0, 0.3);
+  >*{filter: invert(1);}
+}
+
+.btn-secondary {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(225, 225, 230, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--text);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  filter: invert(1);
+}
+
+.icon-sm {
+  width: 16px;
+  height: 16px;
+  filter: invert(1);
+}
+
+img[src*="dumbbell"], img[src*="stopwatch"] {
+  filter: invert(0.7) !important;
+}
+
+.dashboard-header,
+.editor-header,
+.form-header,
+.exec-header,
+.settings-header {
+  height: 76px;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: #0D030C;
+  color: rgb(255, 0, 127);
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  border-bottom: 1px solid rgb(255, 0, 127) !important;
+}
+
+.dashboard-header::before,
+.editor-header::before,
+.form-header::before,
+.exec-header::before,
+.settings-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  /* background: linear-gradient(to bottom, 
+    var(--bg) 0%, 
+    #f5f5f5df 40%, 
+    #f5f5f500 100%
+  ); */
+  pointer-events: none;
+}
+
+
+button img {
+  filter: invert(1);
+}
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  background: var(--bg);
+  outline: none;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+body:has(.overlay) {
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 20px;
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal h3 {
+  font-size: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.modal-actions > * {
+  flex: 1;
+}

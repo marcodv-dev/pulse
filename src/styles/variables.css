@@ -1,0 +1,27 @@
+:root {
+  /* Palette principale (Light Mode) */
+  --bg: #0D030C;
+  --bg-secondary: #2c252b;
+  --text: #e8dce4;
+  --text-secondary: #9a8a94;
+  --accent: rgb(255, 0, 127);
+  --accent-hover: #c03d65;
+  --border: #3a2535;
+  --success: #2E8B57;
+
+  /* Visual Rest Timer */
+  --timer-bg: #0D030C;
+  --timer-text: #FFFFFF;
+  --timer-accent: rgb(255, 0, 127);
+  --timer-alert-bg: rgb(255, 0, 127);
+  --timer-alert-text: #0D030C;
+
+  /* Layout */
+  --max-width: 480px;
+  --radius: 25px;
+  --radius-sm: 25px;
+
+  /* Font */
+  --sans: "Montserrat", sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+}

@@ -1,0 +1,94 @@
+.form-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  height: 76px;
+  border-bottom: 1px solid rgb(255, 100, 188, 0.5);
+  gap: 8px;
+}
+
+.form-title {
+  flex: 1;
+  font-size: 18px;
+  text-align: center;
+}
+
+.form-body {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.media-options {
+  display: flex;
+  gap: 8px;
+}
+
+.media-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.media-option.active {
+  border-color: var(--accent);
+  background: rgba(214, 77, 118, 0.08);
+}
+
+.media-option input {
+  display: none;
+}
+
+.media-preview {
+  margin-top: 8px;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 80px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+.btn-save {
+  margin-top: auto;
+}
