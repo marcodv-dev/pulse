@@ -79,7 +79,7 @@ img[src*="dumbbell"], img[src*="stopwatch"] {
 .form-header,
 .exec-header,
 .settings-header {
-  height: 100px;
+  height: 140px;
   padding-top: env(safe-area-inset-top, 0px);
   background: #0D030C;
   color: rgb(255, 0, 127);
