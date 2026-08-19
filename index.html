@@ -9,6 +9,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="description" content="Pulse — Allenamenti offline con Visual Rest Timer" />
     <link rel="apple-touch-icon" href="/logo_pulse.jpeg" />
+    <script>
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem('pulse-theme') === 'light' ? 'light' : 'dark'
+      } catch (e) {}
+    </script>
     <title>Pulse</title>
   </head>
   <body>

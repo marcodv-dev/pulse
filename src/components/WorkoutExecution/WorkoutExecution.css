@@ -1,13 +1,12 @@
 .execution {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  min-height: 100lvh;
 }
 
 .exec-header {
   display: flex;
   align-items: center;
-  height: 76px;
   border-bottom: 1px solid rgb(255, 100, 188, 0.5);
   gap: 8px;
   flex-shrink: 0;
@@ -43,12 +42,13 @@
 .exec-exercise-info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
+  margin-bottom: 20px;
   text-transform: capitalize;
 }
 
 .exec-exercise-name {
-  font-size: 20px;
+  font-size: 26px;
 }
 
 .exec-media {
@@ -72,7 +72,7 @@
 }
 
 .exec-description {
-  font-size: 15px;
+  font-size: 20px;
   color: var(--text-secondary);
   white-space: pre-wrap;
 }

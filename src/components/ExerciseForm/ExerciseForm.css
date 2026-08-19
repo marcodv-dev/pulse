@@ -1,13 +1,12 @@
 .form-page {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  min-height: 100lvh;
 }
 
 .form-header {
   display: flex;
   align-items: center;
-  height: 76px;
   border-bottom: 1px solid rgb(255, 100, 188, 0.5);
   gap: 8px;
 }
@@ -21,6 +20,7 @@
 .form-body {
   flex: 1;
   padding: 20px;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -91,4 +91,5 @@
 
 .btn-save {
   margin-top: auto;
+  margin-bottom: max(16px, env(safe-area-inset-bottom))
 }

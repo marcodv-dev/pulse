@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import type { View } from '../../App'
 import { exportJSON, exportCSV, importJSON } from '../../utils/export'
+import { getTheme, setTheme, type Theme } from '../../utils/theme'
 import './Settings.css'
 
 interface Props {
@@ -11,6 +12,12 @@ export default function Settings({ onNavigate }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [importStatus, setImportStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [importMessage, setImportMessage] = useState('')
+  const [theme, setThemeState] = useState<Theme>(() => getTheme())
+
+  const handleThemeChange = (t: Theme) => {
+    setTheme(t)
+    setThemeState(t)
+  }
 
   const handleExportJSON = async () => {
     try {
@@ -51,6 +58,24 @@ export default function Settings({ onNavigate }: Props) {
       </header>
 
       <div className="settings-body">
+        <section className="settings-section">
+          <h3>Aspetto</h3>
+          <div className="theme-toggle">
+            <button
+              className={`theme-option ${theme === 'dark' ? 'active' : ''}`}
+              onClick={() => handleThemeChange('dark')}
+            >
+              Scuro
+            </button>
+            <button
+              className={`theme-option ${theme === 'light' ? 'active' : ''}`}
+              onClick={() => handleThemeChange('light')}
+            >
+              Chiaro
+            </button>
+          </div>
+        </section>
+
         <section className="settings-section">
           <h3>Backup e Ripristino</h3>
 

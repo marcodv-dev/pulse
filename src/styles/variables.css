@@ -1,5 +1,5 @@
 :root {
-  /* Palette principale (Light Mode) */
+  /* Palette principale (Dark Mode) */
   --bg: #0D030C;
   --bg-secondary: #2c252b;
   --text: #e8dce4;
@@ -8,6 +8,9 @@
   --accent-hover: #c03d65;
   --border: #3a2535;
   --success: #2E8B57;
+  --header-bg: #0D030C;
+  --icon-filter: invert(1);
+  --icon-filter-dim: invert(0.7);
 
   /* Visual Rest Timer */
   --timer-bg: #0D030C;
@@ -24,4 +27,26 @@
   /* Font */
   --sans: "Montserrat", sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+}
+
+:root[data-theme='light'] {
+  /* Palette principale (Light Mode) */
+  --bg: #faf4f8;
+  --bg-secondary: #ffffff;
+  --text: #201320;
+  --text-secondary: #6d5f68;
+  --accent: rgb(217, 0, 106);
+  --accent-hover: #a80d5f;
+  --border: #e7dbe1;
+  --success: #1f7a48;
+  --header-bg: #f3e7ef;
+  --icon-filter: invert(0);
+  --icon-filter-dim: invert(0.35);
+
+  /* Visual Rest Timer */
+  --timer-bg: #faf4f8;
+  --timer-text: #201320;
+  --timer-accent: rgb(217, 0, 106);
+  --timer-alert-bg: rgb(255, 0, 127);
+  --timer-alert-text: #ffffff;
 }

@@ -1,7 +1,7 @@
 .settings {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  min-height: 100lvh;
 }
 
 .settings-header {
@@ -78,4 +78,38 @@
 
 .info-row span:first-child {
   color: var(--text-secondary);
+}
+
+.theme-toggle {
+  display: flex;
+}
+.theme-toggle :first-child{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.theme-toggle :last-child{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.theme-option {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.theme-option.active {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 0, 127, 0.85) 0%,
+    rgba(255, 0, 127, 0.5) 100%
+  );
+  border-color: var(--accent);
+  color: #ffffff;
 }

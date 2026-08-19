@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import type { View } from '../../App'
 import type { Workout, Exercise } from '../../db/schema'
 import { getWorkout, updateExercise } from '../../db/workouts'
@@ -20,6 +20,10 @@ export default function WorkoutExecution({ workoutId, dayId, exerciseId, onNavig
   const [rest, setRest] = useState(120)
   const [loading, setLoading] = useState(true)
 
+  const initialRef = useRef<{ weight: number; rest: number } | null>(null)
+  const latestRef = useRef<{ weight: number; rest: number; exerciseId: string | null }>({ weight: 0, rest: 0, exerciseId: null })
+  const saveTimerRef = useRef<number | null>(null)
+
   const load = async () => {
     const w = await getWorkout(workoutId)
     setLoading(false)
@@ -35,11 +39,51 @@ export default function WorkoutExecution({ workoutId, dayId, exerciseId, onNavig
     setExercises(day.exercises)
     setWeight(ex.targetWeight)
     setRest(ex.restSeconds)
+    initialRef.current = { weight: ex.targetWeight, rest: ex.restSeconds }
   }
 
   useEffect(() => { load() }, [workoutId, dayId, exerciseId])
 
   const currentExercise = exercises[currentIndex]
+
+  useEffect(() => {
+    latestRef.current = { weight, rest, exerciseId: currentExercise?.exerciseId ?? null }
+  }, [weight, rest, currentExercise])
+
+  useEffect(() => {
+    if (!currentExercise) return
+    const init = initialRef.current
+    if (!init) return
+    if (weight === init.weight && rest === init.rest) return
+
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
+    saveTimerRef.current = window.setTimeout(() => {
+      updateExercise(workoutId, dayId, currentExercise.exerciseId, { targetWeight: weight, restSeconds: rest })
+      saveTimerRef.current = null
+    }, 600)
+
+    return () => {
+      if (saveTimerRef.current) {
+        clearTimeout(saveTimerRef.current)
+        saveTimerRef.current = null
+      }
+    }
+  }, [weight, rest, currentExercise, workoutId, dayId])
+
+  useEffect(() => {
+    return () => {
+      const t = saveTimerRef.current
+      if (t) {
+        clearTimeout(t)
+        saveTimerRef.current = null
+      }
+      const l = latestRef.current
+      const init = initialRef.current
+      if (l.exerciseId && init && (l.weight !== init.weight || l.rest !== init.rest)) {
+        updateExercise(workoutId, dayId, l.exerciseId, { targetWeight: l.weight, restSeconds: l.rest })
+      }
+    }
+  }, [workoutId, dayId])
 
   const handleSetComplete = async () => {
     if (!currentExercise || !workout) return

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import type { View } from '../../App'
 import type { Workout } from '../../db/schema'
 import { getWorkout, addDay, updateDay, deleteDay, deleteExercise } from '../../db/workouts'
@@ -80,7 +81,6 @@ export default function WorkoutEditor({ workoutId, onNavigate }: Props) {
       <header className="editor-header">
         <button className="btn btn-pill btn-secondary" onClick={() => onNavigate({ name: 'dashboard' })}><img src="/back.png" className="icon" alt="Indietro" /></button>
         <h2 className="editor-title">{workout.title}</h2>
-        <div style={{ width: 40 }} />
       </header>
 
       <div className="day-tabs">
@@ -171,13 +171,16 @@ export default function WorkoutEditor({ workoutId, onNavigate }: Props) {
         </div>
       )}
 
-      {selectedDay && (
-        <button
-          className="btn btn-primary btn-pill btn-add-exercise-fixed"
-          onClick={() => onNavigate({ name: 'exerciseForm', workoutId, dayId: selectedDay.dayId })}
-        >
-          <img src="/plus.png" className="icon" alt="Aggiungi esercizio" /> Aggiungi Esercizio
-        </button>
+      {selectedDay && createPortal(
+        <div className="btn-add-exercise-wrapper">
+          <button
+            className="btn btn-primary btn-pill btn-add-exercise-fixed"
+            onClick={() => onNavigate({ name: 'exerciseForm', workoutId, dayId: selectedDay.dayId })}
+          >
+            <img src="/plus.png" className="icon" alt="Aggiungi esercizio" /> Aggiungi Esercizio
+          </button>
+        </div>,
+        document.body
       )}
 
       {editingDayId && (
